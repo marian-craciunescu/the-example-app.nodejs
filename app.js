@@ -34,6 +34,18 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
+
+var service = process.env.APM_SERVER
+var port = process.env.APM_SERVER_PORT
+console.log(service, port)
+var  serviceURL = "http://" + service + ":" + port
+
+console.log(serviceURL)
+
+var apm = require('elastic-apm-node').start({
+  serviceName: 'demoapp-k8s',
+  serverUrl: serviceURL
+})
 // Force all requests on production to be served over https
 app.use(function (req, res, next) {
   if (req.headers['x-forwarded-proto'] !== 'https' && process.env.NODE_ENV === 'production') {
