@@ -39,7 +39,6 @@ var service = process.env.APM_SERVER
 var port = process.env.APM_SERVER_PORT
 console.log(service, port)
 var  serviceURL = "http://" + service + ":" + port
-
 console.log(serviceURL)
 
 var apm = require('elastic-apm-node').start({
