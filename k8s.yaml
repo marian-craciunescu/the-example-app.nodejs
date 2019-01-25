@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: nodeapp-apm
-        image: the-example-app.nodejs
+        image: docker.io/mariancraciunescu/the-example-app.nodejs
         ports:
         - containerPort: 3000
         readinessProbe:
@@ -40,9 +40,8 @@ metadata:
 spec:
   type: NodePort
   ports:
-    - nodePort: 31317
+    - nodePort: 32300
       port: 3000
       protocol: TCP
-      targetPort: 8080
   selector:
     app: nodeapp-apm
